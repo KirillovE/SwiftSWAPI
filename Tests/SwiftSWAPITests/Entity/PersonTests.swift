@@ -1,5 +1,5 @@
 //
-//  EntityTests.swift
+//  PersonTests.swift
 //  
 //
 //  Created by Евгений Кириллов on 07.09.2020.
@@ -8,13 +8,10 @@
 import XCTest
 @testable import SwiftSWAPI
 
-final class EntityTests: XCTestCase {
+final class PersonTests: XCTestCase {
     
     func testPersonDecoding() {
-        let json = personJSON.data(using: .utf8)!
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        let personInstance = try! decoder.decode(Person.self, from: json)
+        let personInstance = try! decoder.decode(Person.self, from: personJSON)
         
         let validName = personInstance.name == "Anakin Skywalker"
         let validHeight = personInstance.height == "188"
@@ -65,12 +62,18 @@ final class EntityTests: XCTestCase {
     }
     
     static var allTests = [
-        ("testPersonDecoding", testPersonDecoding),
+        ("testPersonDecoding", testPersonDecoding)
     ]
 }
 
-extension EntityTests {
-    var personJSON: String {
+extension PersonTests {
+    var decoder: JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
+    }
+    
+    var personJSON: Data {
         """
             {
               "name": "Anakin Skywalker",
@@ -101,6 +104,6 @@ extension EntityTests {
               "edited": "2014-12-20T21:17:50.327000Z",
               "url": "http://swapi.dev/api/people/11/"
             }
-        """
+        """.data(using: .utf8)!
     }
 }
