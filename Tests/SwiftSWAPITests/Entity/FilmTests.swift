@@ -12,13 +12,13 @@ final class FilmTests: XCTestCase {
     func testFilmDecoding() {
         let filmInstance = try! decoder.decode(Film.self, from: filmJSON)
         
-        let titleValid = filmInstance.title == "Revenge of the Sith"
-        let episodeIdValid = filmInstance.episodeId == 3
-        let openingValid = filmInstance.openingCrawl == "War! The Republic is crumbling\r\nunder attacks by the ruthless\r\nSith Lord, Count Dooku.\r\nThere are heroes on both sides.\r\nEvil is everywhere.\r\n\r\nIn a stunning move, the\r\nfiendish droid leader, General\r\nGrievous, has swept into the\r\nRepublic capital and kidnapped\r\nChancellor Palpatine, leader of\r\nthe Galactic Senate.\r\n\r\nAs the Separatist Droid Army\r\nattempts to flee the besieged\r\ncapital with their valuable\r\nhostage, two Jedi Knights lead a\r\ndesperate mission to rescue the\r\ncaptive Chancellor...."
-        let directorValid = filmInstance.director == "George Lucas"
-        let producerValid = filmInstance.producer == "Rick McCallum"
-        let releaseDateValid = filmInstance.releaseDate == "2005-05-19"
-        let charactersValid = filmInstance.characters == [
+        let validTitle = filmInstance.title == "Revenge of the Sith"
+        let validEpisodeId = filmInstance.episodeId == 3
+        let validOpening = filmInstance.openingCrawl == "War! The Republic is crumbling\r\nunder attacks by the ruthless\r\nSith Lord, Count Dooku.\r\nThere are heroes on both sides.\r\nEvil is everywhere.\r\n\r\nIn a stunning move, the\r\nfiendish droid leader, General\r\nGrievous, has swept into the\r\nRepublic capital and kidnapped\r\nChancellor Palpatine, leader of\r\nthe Galactic Senate.\r\n\r\nAs the Separatist Droid Army\r\nattempts to flee the besieged\r\ncapital with their valuable\r\nhostage, two Jedi Knights lead a\r\ndesperate mission to rescue the\r\ncaptive Chancellor...."
+        let validDirector = filmInstance.director == "George Lucas"
+        let validProducer = filmInstance.producer == "Rick McCallum"
+        let validReleaseDate = filmInstance.releaseDate == "2005-05-19"
+        let validCharacters = filmInstance.characters == [
           "http://swapi.dev/api/people/1/",
           "http://swapi.dev/api/people/2/",
           "http://swapi.dev/api/people/3/",
@@ -54,7 +54,7 @@ final class FilmTests: XCTestCase {
           "http://swapi.dev/api/people/82/",
           "http://swapi.dev/api/people/83/"
         ]
-        let planetsValid = filmInstance.planets == [
+        let validPlanets = filmInstance.planets == [
           "http://swapi.dev/api/planets/1/",
           "http://swapi.dev/api/planets/2/",
           "http://swapi.dev/api/planets/5/",
@@ -69,7 +69,7 @@ final class FilmTests: XCTestCase {
           "http://swapi.dev/api/planets/18/",
           "http://swapi.dev/api/planets/19/"
         ]
-        let starshipsValid = filmInstance.starships == [
+        let validStarships = filmInstance.starships == [
           "http://swapi.dev/api/starships/2/",
           "http://swapi.dev/api/starships/32/",
           "http://swapi.dev/api/starships/48/",
@@ -83,7 +83,7 @@ final class FilmTests: XCTestCase {
           "http://swapi.dev/api/starships/74/",
           "http://swapi.dev/api/starships/75/"
         ]
-        let vehiclesValid = filmInstance.vehicles == [
+        let validVehicles = filmInstance.vehicles == [
           "http://swapi.dev/api/vehicles/33/",
           "http://swapi.dev/api/vehicles/50/",
           "http://swapi.dev/api/vehicles/53/",
@@ -98,7 +98,7 @@ final class FilmTests: XCTestCase {
           "http://swapi.dev/api/vehicles/73/",
           "http://swapi.dev/api/vehicles/76/"
         ]
-        let speciesValid = filmInstance.species == [
+        let validSpecies = filmInstance.species == [
           "http://swapi.dev/api/species/1/",
           "http://swapi.dev/api/species/2/",
           "http://swapi.dev/api/species/3/",
@@ -120,24 +120,24 @@ final class FilmTests: XCTestCase {
           "http://swapi.dev/api/species/36/",
           "http://swapi.dev/api/species/37/"
         ]
-        let createdValid = filmInstance.created == "2014-12-20T18:49:38.403000Z"
-        let editedValid = filmInstance.edited == "2014-12-20T20:47:52.073000Z"
-        let urlValid = filmInstance.url == "http://swapi.dev/api/films/6/"
+        let validCreated = filmInstance.created == "2014-12-20T18:49:38.403000Z"
+        let validEdited = filmInstance.edited == "2014-12-20T20:47:52.073000Z"
+        let validUrl = filmInstance.url == "http://swapi.dev/api/films/6/"
         
-        let allValid = titleValid
-            && episodeIdValid
-            && openingValid
-            && directorValid
-            && producerValid
-            && releaseDateValid
-            && charactersValid
-            && planetsValid
-            && starshipsValid
-            && vehiclesValid
-            && speciesValid
-            && createdValid
-            && editedValid
-            && urlValid
+        let allValid = validTitle
+            && validEpisodeId
+            && validOpening
+            && validDirector
+            && validProducer
+            && validReleaseDate
+            && validCharacters
+            && validPlanets
+            && validStarships
+            && validVehicles
+            && validSpecies
+            && validCreated
+            && validEdited
+            && validUrl
         
         XCTAssert(allValid, "Failed to decode JSON")
     }
